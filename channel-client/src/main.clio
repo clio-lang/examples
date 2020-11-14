@@ -1,0 +1,17 @@
+import ping-pong from "ws://localhost:1337/main.clio"
+
+fn on-pong:
+  console.log "Pong received"
+
+export fn main:
+  await ping-pong () => ch
+    -> .on "pong" on-pong
+  
+  fn ping:
+    ch -> .send "ping"
+
+  setInterval ping 1000
+
+
+
+  

@@ -1,0 +1,9 @@
+fn pong:
+  channel ()
+    => ch
+    -> .on "ping" (ev: ch.send "pong")
+    
+export fn main:
+  await |pong| ()
+    -> .on "pong" (ev: console.log "Received pong!")
+    -> .send "ping"

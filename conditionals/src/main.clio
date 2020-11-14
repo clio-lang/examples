@@ -1,0 +1,6 @@
+fn sign n:
+  (if n < 0: 'negative' else: 'positive')
+    -> console.log
+
+export fn main argv:
+  sign -1

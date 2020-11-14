@@ -1,0 +1,10 @@
+fn add a b:
+  a + b
+
+fn mul a b:
+  a * b
+
+export fn main argv:
+  [1 2 3] -> *
+    add 1 -> console.log
+    mul 2 -> console.log

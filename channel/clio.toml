@@ -1,0 +1,42 @@
+title = "template-node"
+description = ""
+version = "0.1.0"
+license = "MIT"
+main = "src/main.clio"
+authors = [ "Your Name <you@example.com>" ]
+keywords = ""
+
+[build]
+directory = "build"
+target = "node"
+
+[target.node]
+directory = "src"
+target = "node"
+
+[scripts]
+test = "No tests specified"
+
+[dependencies]
+stdlib = "latest"
+
+[npm_dependencies]
+#express = "^4.17.1"
+
+[[servers]]
+proto = "ws"
+port = 1337
+host = "0.0.0.0"
+name = "default"
+
+[[workers]]
+proto = "ws"
+url = "ws://localhost:1337"
+count = "cpu"
+server = "default"
+
+[executor]
+proto = "ws"
+url = "ws://localhost:1337"
+wait_for = "cpu"
+server = "default"

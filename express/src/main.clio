@@ -1,0 +1,9 @@
+import "express"
+
+fn hello req res:
+  "Hello world" -> res.send
+
+export fn main argv:
+  express () ->
+    .get "/" hello
+    .listen 3000

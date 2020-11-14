@@ -1,0 +1,35 @@
+title = "template-web"
+description = ""
+version = "0.1.0"
+license = "MIT"
+main = "src/main.clio"
+authors = [ "Your Name <you@example.com>" ]
+keywords = ""
+
+[build]
+directory = "build"
+target = "web"
+
+[target.web]
+directory = "src"
+target = "web"
+
+[scripts]
+test = "No tests specified"
+
+[dependencies]
+stdlib = "latest"
+
+[[servers]]
+proto = "ww"
+name = "default"
+
+[[workers]]
+proto = "ww"
+count = "cpu"
+server = "default"
+
+[executor]
+proto = "ww"
+wait_for = "cpu"
+server = "default"
