@@ -1,7 +1,7 @@
 fn on-ping ch:
   fn on-ping-inner:
     console.log "Ping received"
-    ch -> .send "pong"
+    ch -> .emit "pong"
 
 export fn ping-pong:
   channel () => ch

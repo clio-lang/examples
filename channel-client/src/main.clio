@@ -8,10 +8,7 @@ export fn main:
     -> .on "pong" on-pong
   
   fn ping:
-    ch -> .send "ping"
+    ch -> .emit "ping"
 
   setInterval ping 1000
-
-
-
   

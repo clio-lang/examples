@@ -1,9 +1,9 @@
 fn pong:
-  channel ()
+  emitter ()
     => ch
-    -> .on "ping" (ev: ch.send "pong")
+    -> .on "ping" (ev: ch.emit "pong")
     
 export fn main:
   await |pong| ()
     -> .on "pong" (ev: console.log "Received pong!")
-    -> .send "ping"
+    -> .emit "ping"
