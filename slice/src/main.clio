@@ -4,11 +4,25 @@ export fn main argv:
    [7 8 9]] => arr
 
   arr -> console.log
+  -- index 0:
   arr[0] -> console.log
+  -- slice 0 to 2 (end not inclusive):
   arr[0:2] -> console.log
+  -- get index 1 and 2:
   arr[1 2] -> console.log
+  -- slice 0 to 2 on index 0:
   arr[[0:2]] -> console.log
+  -- slice 0 to 2 on index 0 and 1:
   arr[[0:2] [0:2]] -> console.log
+  -- slice 0 to 2 on index 0 and 1:
+  arr[#[0 1]:[0:2]] -> console.log
+  -- item 0 at index 0, item 1 at index 1
+  arr[#0:0 1:1] -> console.log
+  -- slice 0 to 2 on index 0 and 1 alternate form:
+  arr[#0:[0:2] 1:[0:2]] -> console.log
+  -- index 0 of slice 0 to 2:
   arr[#[0:2]:0] -> console.log
+  -- index 0 of slice 0 to 2 alternate form (first element of first and second items):
   arr[#[0 1]:0] -> console.log
+  -- slice 0 to 2 of items in slice 0 to 2:
   arr[#[0:2]:[0:2]] -> console.log
