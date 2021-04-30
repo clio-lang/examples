@@ -1,0 +1,42 @@
+fn random: Math.random () -> Math.round
+fn row _ width: 0..width -> * random -> .toArray
+fn slicer x: (x - 1) .. (x + 2) -> .toArray -> .filter (@it >= 0)
+
+fn tickCol cell board y x row:
+  score = [board[y - 1] row board[y + 1]]
+    -> .filter Boolean
+    -> * slice (slicer x)
+    -> .flat
+    -> .reduce (@left + @right) (0 - cell)
+  
+  if score == 3: 1 else if score == 2: cell else: 0
+
+fn tickRow row y board: row -> * tickCol board y
+
+fn drawCol col ctx y x:
+  ctx.fillStyle = col and "#282a36" or "#dfe4eb"
+  ctx.fillRect (x * 5) (y * 5) 4 4
+
+fn drawRow row ctx y: row -> * drawCol ctx y
+fn draw board ctx: board -> * drawRow ctx
+
+fn tick width height board ctx time fps:
+  now = performance.now ()
+  fps.innerText = Math.round (6000 / (now - time))
+  draw board ctx
+  next = board -> * [await] |tickRow|
+  fn nextTick: tick width height next ctx now fps
+  requestAnimationFrame nextTick
+
+fn gameOfLife width height ctx fps:
+  board = 0..height -> * row width -> .toArray
+  now = performance.now ()
+  tick width height board ctx now fps
+
+export fn main argv:
+  fps = document.getElementById "fps"
+  canvas = document.getElementById "game"
+  canvas.width = 128 * 5 -- let each cell be 4x4 pixels
+  canvas.height = 128 * 5 -- with 1 pixel empty in between
+  ctx = canvas.getContext "2d"
+  gameOfLife 128 128 ctx fps

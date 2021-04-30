@@ -1,4 +1,0 @@
-export fn main argv:
-  "World" => world
-  f"Hello {world -> .toUpperCase}!!!"
-    -> console.log

@@ -21,15 +21,15 @@ test = "No tests specified"
 stdlib = "latest"
 
 [[servers]]
-proto = "wt"
+proto = "tcp"
 name = "default"
 
 [[workers]]
-proto = "wt"
+proto = "tcp"
 count = "cpu"
 server = "default"
 
 [executor]
-proto = "wt"
+proto = "tcp"
 wait_for = "cpu"
 server = "default"

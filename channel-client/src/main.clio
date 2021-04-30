@@ -1,14 +1,14 @@
-import ping-pong from "ws://localhost:1337/main.clio"
+import pingPong from "ws:localhost:1337/main.clio"
 
-fn on-pong:
+fn onPong:
   console.log "Pong received"
 
 export fn main:
-  await ping-pong () => ch
-    -> .on "pong" on-pong
+  await pingPong ()
+    => ch
+    -> .on "pong" onPong
   
   fn ping:
     ch -> .emit "ping"
 
   setInterval ping 1000
-  

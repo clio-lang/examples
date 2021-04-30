@@ -4,6 +4,6 @@ fn fib n:
       + (fib n - 2)
 
 export fn main argv:
-  [39 40 41 42]
-    -> * fib
-    -> * result: console.log result
+  [37 38 39 40]
+    -> * [await] |fib|
+    -> console.log

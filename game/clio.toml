@@ -1,4 +1,4 @@
-title = "template-node"
+title = "template-web"
 description = ""
 version = "0.1.0"
 license = "MIT"
@@ -8,11 +8,11 @@ keywords = ""
 
 [build]
 directory = "build"
-target = "node"
+target = "web"
 
-[target.node]
+[target.web]
 directory = "src"
-target = "node"
+target = "web"
 
 [scripts]
 test = "No tests specified"
@@ -21,15 +21,15 @@ test = "No tests specified"
 stdlib = "latest"
 
 [[servers]]
-proto = "wt"
+proto = "ww"
 name = "default"
 
 [[workers]]
-proto = "wt"
+proto = "ww"
 count = "cpu"
 server = "default"
 
 [executor]
-proto = "wt"
+proto = "ww"
 wait_for = "cpu"
 server = "default"

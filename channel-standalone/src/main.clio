@@ -1,9 +1,0 @@
-fn pong:
-  emitter ()
-    => ch
-    -> .on "ping" (ev: ch.emit "pong")
-    
-export fn main:
-  await |pong| ()
-    -> .on "pong" (ev: console.log "Received pong!")
-    -> .emit "ping"

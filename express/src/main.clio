@@ -1,9 +1,9 @@
-import "express"
+import "js:express"
 
 fn hello req res:
   "Hello world" -> res.send
 
 export fn main argv:
-  express () ->
-    .get "/" hello
-    .listen 3000
+  express () => app
+  app.get "/" hello
+  app.listen 3000
