@@ -1,0 +1,43 @@
+fn complex real imag:
+  # real: real imag: imag
+
+fn complexAdd lhs rhs:
+  # real: (lhs.real + rhs.real)
+    imag: (lhs.imag + rhs.imag)
+
+fn complexMul lhs rhs:
+  # real: (lhs.real * rhs.real - lhs.imag * rhs.imag)
+    imag: (lhs.real * rhs.imag + rhs.real * lhs.imag)
+
+fn complexAbs number:
+  (number.real ** 2 + number.imag ** 2) ** 0.5
+
+fn mandelbrot initial number iter:
+  result = complexMul number number -> complexAdd initial
+  if iter and (complexAbs result) < 2: mandelbrot initial result (iter - 1)
+  else: iter
+
+fn calculateCell x y width height:
+  number = complex (3.675 * (x / width) - 2.325) (4 * (y / height) - 2)
+  result = mandelbrot number number 1000
+  # x: x y: y m: result
+
+fn calculateRow y width height:
+  0..width -> .toArray -> * calculateCell y width height
+
+fn drawCell cell ctx:
+  ctx.fillStyle = f"hsl({cell.m/1000*1000},50%,50%)"
+  ctx.fillRect cell.x cell.y 1 1
+
+fn drawRow promise ctx:
+  await promise -> * drawCell ctx
+
+fn draw width height ctx:
+  0..height -> .toArray -> * |calculateRow| width height -> * drawRow ctx
+
+export fn main argv:
+  canvas = document.getElementById "mandelbrot"
+  canvas.width = 1024
+  canvas.height = 1024
+  ctx = canvas.getContext "2d"
+  draw 1024 1024 ctx

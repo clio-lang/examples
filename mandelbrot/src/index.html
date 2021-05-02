@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mandelbrot</title>
+    <style>
+      body,
+      html {
+        padding: 0;
+        margin: 0;
+        min-height: 100%;
+        height: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background: rgba(98, 114, 164, 0.1);
+      }
+      canvas {
+        zoom: 0.5;
+        padding: 0.5em;
+        border-radius: 0.5em;
+        background: #dfe4eb;
+        box-shadow: 12px 12px 24px 0 rgb(0 0 0 / 20%),
+          -12px -12px 24px 0 rgb(255 255 255 / 50%);
+        border-radius: 40px;
+        overflow: hidden;
+        padding: 1.3rem;
+        display: flex;
+        max-width: 85vw;
+      }
+      .main {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        gap: 1em;
+        padding-top: 2em;
+        box-sizing: border-box;
+      }
+      .stats {
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Clio - Mandelbrot</h1>
+      <canvas id="mandelbrot"></canvas>
+      <div class="stats">1024x1024 points - 1000 recursions / point</div>
+    </div>
+    <script src=".clio/index.js"></script>
+  </body>
+</html>
