@@ -26,7 +26,7 @@ fn calculateRow y width height:
   0..width -> .toArray -> * calculateCell y width height
 
 fn drawCell cell ctx:
-  ctx.fillStyle = f"hsl({cell.m/1000*1000},50%,50%)"
+  ctx.fillStyle = f"hsl({cell.m/1000*569},66%,50%)"
   ctx.fillRect cell.x cell.y 1 1
 
 fn drawRow promise ctx:
