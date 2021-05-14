@@ -1,0 +1,44 @@
+import set del sub update from "ws:127.0.0.1:1337/main.clio"
+
+fn template todo:
+  f"<label>
+      <input type='checkbox' class='check' {todo.checked and "checked" or ""}>
+      {todo.body or ""}
+    </label>
+    <button class='delete'> DELETE </button>"
+
+fn onDelBtnClicked id:
+  fn onEvent: del id
+
+fn onCheck id:
+  fn onEvent event:
+    update id # checked: event.target.checked
+
+fn onAdded data:
+  el = document.createElement "div"
+  document.getElementById "todos" -> .appendChild el
+  el.innerHTML = template data
+  el.dataset.id = data.id
+  el.querySelector ".delete" -> .addEventListener "click" (onDelBtnClicked data.id)
+  el.querySelector ".check" -> .addEventListener "change" (onCheck data.id)
+
+fn onRemoved data:
+  document.querySelector f"[data-id='{data.id}']" -> .remove
+
+fn onModified data:
+  checkbox = document.querySelector f"[data-id='{data.id}'] .check"
+  checkbox.checked = data.checked
+
+fn onAddBtnClicked:
+  el = document.querySelector "[name=body]"
+  if el.value:
+    id = Math.random () -> (@number * 1000000000) -> Math.round -> .toString
+    set id # body: el.value id: id checked: false
+    el.value = ""
+
+export fn main argv:
+  await sub ()
+   -> .on "added" onAdded
+   -> .on "modified" onModified
+   -> .on "removed" onRemoved
+  document.getElementById "add" -> .addEventListener "click" onAddBtnClicked

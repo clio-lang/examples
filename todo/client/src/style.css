@@ -1,0 +1,95 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  padding: 1em;
+}
+
+h1,
+#todos > div,
+.add-todo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+#todos > div,
+.add-todo {
+  border-radius: 1em;
+  background: #dfe4ea;
+  box-shadow: 20px 20px 60px #bec2c7, -20px -20px 60px #ffffff;
+  margin-top: 2em;
+}
+
+button {
+  padding: 1em 2em;
+  border: none;
+  outline: none;
+  border-radius: 4em;
+  color: #fff;
+}
+
+.delete {
+  background: linear-gradient(145deg, #ff3a3a, #da3131);
+}
+
+#add {
+  background: linear-gradient(145deg, #3a87ff, #3171da);
+}
+
+.add-todo {
+  display: flex;
+}
+
+[name="body"] {
+  flex: 1;
+  margin-right: 1em;
+  border-radius: 1em;
+  background: #dfe4ea;
+  box-shadow: inset 20px 20px 60px #bec2c7, inset -20px -20px 60px #ffffff;
+  border: none;
+  outline: none;
+  padding-left: 1em;
+}
+
+#todos > div {
+  display: flex;
+  align-items: center;
+}
+
+#todos label {
+  flex: 1;
+  margin-right: 1em;
+}
+
+.check {
+  margin-right: 3em;
+}
+
+.check::after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: "✖️";
+  background: #dfe4ea;
+  box-shadow: 2px 2px 6px #bec2c7, -2px -2px 6px #ffffff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: block;
+  border-radius: 8px;
+  margin-top: -8px;
+  text-align: center;
+  line-height: 35px;
+}
+
+.check:checked::after {
+  content: "✔️";
+  box-shadow: inset 2px 2px 6px #bec2c7, inset -2px -2px 6px #ffffff;
+}

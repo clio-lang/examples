@@ -1,0 +1,28 @@
+import "js:./serviceAccountKey.json"
+import * as admin from "js:firebase-admin"
+
+admin.initializeApp # credential: (admin.credential.cert serviceAccountKey)
+db = admin.firestore ()
+collection = db.collection "todos"
+
+export fn set id todo:
+  collection.doc id -> await .set todo
+
+export fn update id modifier:
+  collection.doc id -> await .update modifier
+
+export fn del id:
+  collection.doc id -> await .delete
+
+fn onChange change channel:
+  data = change.doc.data ()
+  channel.emit change.type data
+
+fn onSnapshot channel:
+  fn onEvent snapshot:
+    snapshot -> .docChanges -> * onChange channel
+
+export fn sub:
+  channel = emitter ()
+  collection.onSnapshot (onSnapshot channel)
+  channel
