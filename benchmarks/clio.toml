@@ -1,0 +1,40 @@
+title = "template-node"
+description = ""
+version = "0.1.0"
+license = "MIT"
+main = "src/main.clio"
+authors = [ "Your Name <you@example.com>" ]
+keywords = ""
+
+[build]
+directory = "build"
+target = "node"
+
+[target.node]
+directory = "src"
+target = "node"
+
+[scripts]
+test = "No tests specified"
+
+[[servers]]
+proto = "wt"
+name = "default"
+
+[[workers]]
+proto = "wt"
+count = "cpu"
+server = "default"
+
+[executor]
+proto = "wt"
+wait_for = "cpu"
+server = "default"
+
+[dependencies]
+stdlib = "latest"
+
+[npm_dependencies]
+benny = "3.6.15"
+node-fetch = "2.6.1"
+jimp = "0.16.1"

@@ -1,0 +1,88 @@
+import "js:benny"
+import fib from "./tests/fib/fib.clio"
+import fib as jsFib from "js:./tests/fib/fib.js"
+import isPrime from "./tests/primes/primes.clio"
+import isPrime as jsIsPrime from "js:./tests/primes/primes.js"
+import grey from "./tests/jimp/grey.clio"
+import grey as jsGrey from "js:./tests/jimp/grey.js"
+
+all30 = [30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30]
+fibdata = 20..36 -> .toArray
+
+fn clioFib30Test:
+  all30 -> * fib
+
+fn clioParallelFib30Test:
+  all30 -> * [await] |fib|
+
+fn jsFib30Test:
+  all30 -> * jsFib
+
+fn clioFibTest:
+  fibdata -> * fib
+
+fn clioParallelFibTest:
+  fibdata -> * [await] |fib|
+
+fn jsFibTest:
+  fibdata -> * jsFib
+
+fn clioJimpTest:
+  1..16 -> .toArray -> * [await] grey
+
+fn clioParallelJimpTest:
+  1..16 -> .toArray -> * [await] |grey|
+
+fn jsJimpTest:
+  1..16 -> .toArray -> * [await] jsGrey
+
+fn clioPrimesTest:
+  1..16000 -> .toArray -> * isPrime -> .filter Boolean
+
+fn parallelIsPrime start:
+  (start * 1000 + 1)..((start + 1) * 1000) -> .toArray -> * isPrime -> .filter Boolean
+
+fn clioParallelPrimesTest:
+  0..16 -> .toArray -> * [await] |parallelIsPrime| -> .flat
+
+fn jsPrimesTest:
+  1..16000 -> .toArray -> * isPrime -> .filter Boolean
+
+export fn main argv:
+  await benny.suite.apply null [
+    "Clio benchmark (Jimp)"
+    (benny.add "Clio - Jimp"              clioJimpTest)
+    (benny.add "Clio - Jimp (Parallel)"   clioParallelJimpTest)
+    (benny.add "JS - Jimp"                jsJimpTest)
+    (benny -> .cycle)
+    (benny -> .complete)
+    (benny -> .save # format: "chart.html" file: "jimp")
+  ]
+  await benny.suite.apply null [
+    "Clio benchmark (Primes)"
+    (benny.add "Clio - Primes"              clioPrimesTest)
+    (benny.add "Clio - Primes (Parallel)"   clioParallelPrimesTest)
+    (benny.add "JS - Primes"                jsPrimesTest)
+    (benny -> .cycle)
+    (benny -> .complete)
+    (benny -> .save # format: "chart.html" file: "primes")
+  ]
+  await benny.suite.apply null [
+    "Clio benchmark (Fib 30)"
+    (benny.add "Clio - Fib"              clioFib30Test)
+    (benny.add "Clio - Fib (Parallel)"   clioParallelFib30Test)
+    (benny.add "JS - Fib"                jsFib30Test)
+    (benny -> .cycle)
+    (benny -> .complete)
+    (benny -> .save # format: "chart.html" file: "fib.30")
+  ]
+  await benny.suite.apply null [
+    "Clio benchmark (Fib 30..46)"
+    (benny.add "Clio - Fib"              clioFibTest)
+    (benny.add "Clio - Fib (Parallel)"   clioParallelFibTest)
+    (benny.add "JS - Fib"                jsFibTest)
+    (benny -> .cycle)
+    (benny -> .complete)
+    (benny -> .save # format: "chart.html" file: "fib.range")
+  ]
+  process -> .exit 0

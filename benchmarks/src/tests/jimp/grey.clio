@@ -1,0 +1,5 @@
+import "js:jimp"
+
+export fn grey index:
+  img = await jimp.read f"tests/jimp/images/low/img{index}.jpg" -> .greyscale
+  img.bitmap.width * img.bitmap.height
