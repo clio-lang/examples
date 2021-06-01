@@ -2,26 +2,19 @@ title = "template-node"
 description = ""
 version = "0.1.0"
 license = "MIT"
-main = "src/main.clio"
 authors = [ "Your Name <you@example.com>" ]
 keywords = ""
 
 [build]
-directory = "build"
-target = "node"
-
-[target.node]
-directory = "src"
-target = "node"
+source = "src"
+destination = "build"
+target = "js"
 
 [scripts]
 test = "No tests specified"
 
 [dependencies]
 stdlib = "latest"
-
-[npm_dependencies]
-#express = "^4.17.1"
 
 [[servers]]
 proto = "ws"
@@ -40,3 +33,7 @@ proto = "ws"
 url = "ws://localhost:1337"
 wait_for = "cpu"
 server = "default"
+
+[npm.scripts]
+start = "node .clio/index.js"
+host = "node .clio/host.js"

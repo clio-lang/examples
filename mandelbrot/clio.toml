@@ -2,17 +2,13 @@ title = "template-web"
 description = ""
 version = "0.1.0"
 license = "MIT"
-main = "src/main.clio"
 authors = [ "Your Name <you@example.com>" ]
 keywords = ""
 
 [build]
-directory = "build"
-target = "web"
-
-[target.web]
-directory = "src"
-target = "web"
+source = "src"
+destination = "build"
+target = "js"
 
 [scripts]
 test = "No tests specified"
@@ -33,3 +29,21 @@ server = "default"
 proto = "ww"
 wait_for = "cpu"
 server = "default"
+
+# Npm specific configs
+
+[npm]
+browserlist = ["not dead"]
+main = "index.html"
+
+[npm.alias]
+ws = "clio-rpc/transports/ws/shim.js"
+"main.clio.js" = "./main.clio.js"
+
+[npm.devDependencies]
+parcel = "next"
+
+[npm.scripts]
+start = "parcel index.html"
+host = "node .clio/host.js"
+build = "parcel build index.html"

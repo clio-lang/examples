@@ -38,7 +38,7 @@ fn onAddBtnClicked:
 
 export fn main argv:
   await sub ()
-   -> .on "added" onAdded
-   -> .on "modified" onModified
-   -> .on "removed" onRemoved
+    -> .on "added" onAdded
+    -> .on "modified" onModified
+    -> .on "removed" onRemoved
   document.getElementById "add" -> .addEventListener "click" onAddBtnClicked

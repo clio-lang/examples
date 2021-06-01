@@ -2,17 +2,13 @@ title = "template-node"
 description = ""
 version = "0.1.0"
 license = "MIT"
-main = "src/main.clio"
 authors = [ "Your Name <you@example.com>" ]
 keywords = ""
 
 [build]
-directory = "build"
-target = "node"
-
-[target.node]
-directory = "src"
-target = "node"
+source = "src"
+destination = "build"
+target = "js"
 
 [scripts]
 test = "No tests specified"
@@ -36,3 +32,7 @@ server = "default"
 proto = "wt"
 wait_for = "cpu"
 server = "default"
+
+[npm.scripts]
+start = "node .clio/index.js"
+host = "node .clio/host.js"

@@ -2,17 +2,13 @@ title = "template-node"
 description = ""
 version = "0.1.0"
 license = "MIT"
-main = "src/main.clio"
 authors = [ "Your Name <you@example.com>" ]
 keywords = ""
 
 [build]
-directory = "build"
-target = "node"
-
-[target.node]
-directory = "src"
-target = "node"
+source = "src"
+destination = "build"
+target = "js"
 
 [scripts]
 test = "No tests specified"
@@ -34,7 +30,11 @@ server = "default"
 [dependencies]
 stdlib = "latest"
 
-[npm_dependencies]
+[npm.dependencies]
 benny = "3.6.15"
 node-fetch = "2.6.1"
 jimp = "0.16.1"
+
+[npm.scripts]
+start = "node .clio/index.js"
+host = "node .clio/host.js"

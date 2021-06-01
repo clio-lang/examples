@@ -4,6 +4,6 @@ fn onPing ch:
     ch -> .emit "pong"
 
 export fn pingPong:
-  channel ()
+  emitter ()
     => ch
     -> .on "ping" (onPing ch)
