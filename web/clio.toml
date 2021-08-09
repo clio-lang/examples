@@ -33,15 +33,14 @@ server = "default"
 # Npm specific configs
 
 [npm]
-browserlist = ["> 0.2%", "not dead"]
-main = "index.html"
+browserslist = ["defaults", "not IE 11"]
 
 [npm.alias]
 ws = "clio-rpc/transports/ws/shim.js"
 "main.clio.js" = "./main.clio.js"
 
 [npm.devDependencies]
-parcel = "next"
+parcel = "nightly"
 
 [npm.scripts]
 start = "parcel index.html"
