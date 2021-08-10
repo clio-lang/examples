@@ -35,14 +35,14 @@ server = "default"
 [npm]
 browserslist = ["defaults", "not IE 11"]
 
-[npm.alias]
-ws = "clio-rpc/transports/ws/shim.js"
-"main.clio.js" = "./main.clio.js"
-
 [npm.devDependencies]
-parcel = "nightly"
+rollup = "^2.56.2"
+sirv-cli = "^1.0.12"
+clio-rollup = "latest"
+"@babel/preset-env" = "^7.15.0"
 
 [npm.scripts]
-start = "parcel index.html"
 host = "node .clio/host.js"
-build = "parcel build index.html"
+build = "rollup -c"
+dev = "rollup -c -w"
+start = "npm run build && sirv public"

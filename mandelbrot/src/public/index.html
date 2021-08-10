@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Game of Life</title>
+    <title>Mandelbrot</title>
     <style>
       body,
       html {
@@ -27,6 +27,7 @@
         overflow: hidden;
         padding: 1.3rem;
         display: flex;
+        max-width: 85vw;
       }
       .main {
         margin: 0 auto;
@@ -39,17 +40,17 @@
         padding-top: 2em;
         box-sizing: border-box;
       }
-      .benchmark {
+      .stats {
         margin-top: 1em;
       }
     </style>
   </head>
   <body>
     <div class="main">
-      <h1>Clio - Game of Life</h1>
-      <canvas id="game"></canvas>
-      <div class="benchmark"><span id="fps"></span> fps - 16384 cells</div>
+      <h1>Clio - Mandelbrot</h1>
+      <canvas id="mandelbrot"></canvas>
+      <div class="stats">1024x1024 points - 1000 recursions / point</div>
     </div>
-    <script src=".clio/index.js" type="module"></script>
+    <script src="/build/index.js" type="module"></script>
   </body>
 </html>
