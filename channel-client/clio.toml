@@ -13,9 +13,6 @@ target = "js"
 [scripts]
 test = "No tests specified"
 
-[dependencies]
-stdlib = "latest"
-
 [npm_dependencies]
 #express = "^4.17.1"
 

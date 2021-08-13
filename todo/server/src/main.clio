@@ -1,5 +1,5 @@
 import "js:./serviceAccountKey.json"
-import * as admin from "js:firebase-admin"
+import "js:firebase-admin" as admin
 
 admin.initializeApp # credential: (admin.credential.cert serviceAccountKey)
 db = admin.firestore ()

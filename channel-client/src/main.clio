@@ -1,4 +1,4 @@
-import pingPong from "ws:localhost:1337/main.clio"
+from "ws:localhost:1337/ping@0.1.0/main.clio" import pingPong
 
 fn onPong:
   console.log "Pong received"

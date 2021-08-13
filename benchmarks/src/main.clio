@@ -1,10 +1,10 @@
 import "js:benny"
-import fib from "./tests/fib/fib.clio"
-import fib as jsFib from "js:./tests/fib/fib.js"
-import isPrime from "./tests/primes/primes.clio"
-import isPrime as jsIsPrime from "js:./tests/primes/primes.js"
-import grey from "./tests/jimp/grey.clio"
-import grey as jsGrey from "js:./tests/jimp/grey.js"
+from "./tests/fib/fib.clio" import fib
+from "js:./tests/fib/fib.js" import fib as jsFib
+from "./tests/primes/primes.clio" import isPrime
+from "js:./tests/primes/primes.js" import isPrime as jsIsPrime
+from "./tests/jimp/grey.clio" import grey
+from "js:./tests/jimp/grey.js" import grey as jsGrey
 
 all30 = [30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30]
 fibdata = 20..36 -> .toArray

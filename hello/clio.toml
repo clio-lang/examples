@@ -13,9 +13,6 @@ target = "js"
 [scripts]
 test = "No tests specified"
 
-[dependencies]
-stdlib = "latest"
-
 [[servers]]
 proto = "wt"
 name = "default"

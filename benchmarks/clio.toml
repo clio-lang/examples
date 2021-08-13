@@ -27,9 +27,6 @@ proto = "wt"
 wait_for = "cpu"
 server = "default"
 
-[dependencies]
-stdlib = "latest"
-
 [npm.dependencies]
 benny = "3.6.15"
 node-fetch = "2.6.1"

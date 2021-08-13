@@ -1,4 +1,4 @@
-title = "template-node"
+title = "todo-server"
 description = ""
 version = "0.1.0"
 license = "MIT"
@@ -30,9 +30,6 @@ proto = "ws"
 url = "ws://localhost:1337"
 wait_for = "cpu"
 server = "default"
-
-[dependencies]
-stdlib = "latest"
 
 [npm.dependencies]
 firebase-admin = "9.8.0"

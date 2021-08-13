@@ -1,4 +1,4 @@
-import set del sub update from "ws:127.0.0.1:1337/main.clio"
+from "ws:127.0.0.1:1337/todo-server@0.1.0/main.clio" import set del sub update
 
 fn template todo:
   f"<label>

@@ -1,4 +1,4 @@
-title = "template-web"
+title = "todo-client"
 description = ""
 version = "0.1.0"
 license = "MIT"
@@ -12,9 +12,6 @@ target = "js"
 
 [scripts]
 test = "No tests specified"
-
-[dependencies]
-stdlib = "latest"
 
 [[servers]]
 proto = "ww"
