@@ -1,4 +1,4 @@
-import "js:jimp"
+import "cjs:jimp"
 
 export fn grey index:
   img = await jimp.read f"tests/jimp/images/low/img{index}.jpg" -> .greyscale

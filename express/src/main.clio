@@ -1,4 +1,4 @@
-import "js:express"
+import "esm:express"
 
 fn hello req res:
   "Hello world" -> res.send
